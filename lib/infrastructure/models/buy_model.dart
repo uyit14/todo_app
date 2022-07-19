@@ -1,11 +1,16 @@
 class BuyModel {
-  int? id;
-  String? name;
-  int? price;
-  int? quantity;
-  int? type;
+  late int id;
+  late String name;
+  late int price;
+  late int quantity;
+  late int type;
 
-  BuyModel({this.id, this.name, this.price, this.quantity, this.type});
+  BuyModel(
+      {required this.id,
+      required this.name,
+      required this.price,
+      required this.quantity,
+      required this.type});
 
   BuyModel.fromJson(Map<String, dynamic> json) {
     id = json['id'];
