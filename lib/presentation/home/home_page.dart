@@ -13,10 +13,13 @@ class HomePage extends GetView<HomeController> {
         appBar: AppBar(
           title: const Text("Home"),
         ),
-        body: Container(
+        body: Center(
           child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              ElevatedButton(onPressed: () {}, child: const Text("To Call"))
+              ElevatedButton(onPressed: () {}, child: const Text("To Call")),
+              ElevatedButton(onPressed: () {}, child: const Text("To Buy")),
+              ElevatedButton(onPressed: () {}, child: const Text("To Sell"))
             ],
           ),
         ),
