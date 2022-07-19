@@ -1,6 +1,7 @@
 import 'package:flutter/foundation.dart';
 import 'package:get/get.dart';
 import 'package:todo_app/common/app_routes.dart';
+import 'package:todo_app/domain/entities/buy_entity.dart';
 
 import '../../domain/usecases/usecase.dart';
 
@@ -63,12 +64,17 @@ class HomeController extends GetxController {
     try {
       final result = await toSellListUseCase.call(NoParams());
       if (result.isEmpty) {
-        //at first time, if don't have sell data in the local db,
-        //get from buy api and store as sell with type = 2
-        final buyResult = await toBuyListUseCase.call(NoParams());
-        final saveResult = await saveToBuyUseCase.call(buyResult);
+        //at first time, if don't have sells data in the local db
+        // -> save initialList
+        var initialList = [
+          BuyEntity(
+              id: 1, name: "iPhoneX", price: 150000, quantity: 1, type: 2),
+          BuyEntity(id: 2, name: "TV", price: 38000, quantity: 2, type: 2),
+          BuyEntity(id: 3, name: "Table", price: 12000, quantity: 1, type: 2)
+        ];
+        final saveResult = await saveToBuyUseCase.call(initialList);
         if (saveResult) {
-          list.value = buyResult;
+          list.value = initialList;
           isLoading.value = false;
         }
       } else {

@@ -27,7 +27,25 @@ class DetailPage extends GetView<HomeController> {
               ListView.builder(
                   itemCount: _list.length,
                   itemBuilder: (context, index) {
-                    return Text(_list[index].name);
+                    return Card(
+                      child: Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: Column(
+                          children: [
+                            Text(_list[index].name),
+                            todoType == TODO_TYPE.call
+                                ? Text(_list[index].number)
+                                : Container(),
+                            todoType != TODO_TYPE.call
+                                ? Text(_list[index].price.toString())
+                                : Container(),
+                            todoType != TODO_TYPE.call
+                                ? Text(_list[index].quantity.toString())
+                                : Container(),
+                          ],
+                        ),
+                      ),
+                    );
                   }),
               _isLoading
                   ? const Center(

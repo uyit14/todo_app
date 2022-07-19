@@ -19,13 +19,22 @@ class HomePage extends GetView<HomeController> {
             children: [
               ElevatedButton(
                   onPressed: () => controller.navigateToDetail(TODO_TYPE.call),
-                  child: const Text("To Call")),
+                  child: const Padding(
+                    padding: EdgeInsets.all(8.0),
+                    child: Text("To Call"),
+                  )),
               ElevatedButton(
                   onPressed: () => controller.navigateToDetail(TODO_TYPE.buy),
-                  child: const Text("To Buy")),
+                  child: const Padding(
+                    padding: EdgeInsets.all(8.0),
+                    child: Text("To Buy"),
+                  )),
               ElevatedButton(
                   onPressed: () => controller.navigateToDetail(TODO_TYPE.sell),
-                  child: const Text("To Sell"))
+                  child: const Padding(
+                    padding: EdgeInsets.all(8.0),
+                    child: Text("To Sell"),
+                  ))
             ],
           ),
         ),
