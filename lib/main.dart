@@ -13,8 +13,8 @@ void main() async {
   final applicationDocumentDir = await getApplicationDocumentsDirectory();
   Hive.init(applicationDocumentDir.path);
 
-  await Hive.openBox<HiveSellModel>(DbConstants.DB_NAME);
   Hive.registerAdapter(HiveSellModelAdapter());
+  await Hive.openBox<HiveSellModel>(DbConstants.DB_NAME);
 
   runApp(const MyApp());
 }
