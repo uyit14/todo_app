@@ -17,9 +17,15 @@ class HomePage extends GetView<HomeController> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              ElevatedButton(onPressed: () {}, child: const Text("To Call")),
-              ElevatedButton(onPressed: () {}, child: const Text("To Buy")),
-              ElevatedButton(onPressed: () {}, child: const Text("To Sell"))
+              ElevatedButton(
+                  onPressed: () => controller.navigateToDetail(TODO_TYPE.call),
+                  child: const Text("To Call")),
+              ElevatedButton(
+                  onPressed: () => controller.navigateToDetail(TODO_TYPE.buy),
+                  child: const Text("To Buy")),
+              ElevatedButton(
+                  onPressed: () => controller.navigateToDetail(TODO_TYPE.sell),
+                  child: const Text("To Sell"))
             ],
           ),
         ),
