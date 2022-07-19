@@ -1,10 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:hive/hive.dart';
+import 'package:path_provider/path_provider.dart';
+import 'package:todo_app/infrastructure/models/hive_sell_model.dart';
 import 'package:todo_app/presentation/home/home.dart';
 
 import 'common/app_pages.dart';
+import 'common/db_constants.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  final applicationDocumentDir = await getApplicationDocumentsDirectory();
+  Hive.init(applicationDocumentDir.path);
+  await Hive.openBox<HiveSellModel>(DbConstants.DB_NAME);
+  Hive.registerAdapter(HiveSellModelAdapter());
   runApp(const MyApp());
 }
 
