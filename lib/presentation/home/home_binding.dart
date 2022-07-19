@@ -11,7 +11,13 @@ class HomeBinding extends Bindings {
     Get.lazyPut(
         () => ToCallListUseCase(repository: Get.find<RepositoryImpl>()));
     Get.lazyPut(() => ToBuyListUseCase(repository: Get.find<RepositoryImpl>()));
+    Get.lazyPut(
+        () => ToSellListUseCase(repository: Get.find<RepositoryImpl>()));
+    Get.lazyPut(() => SaveToBuyUseCase(repository: Get.find<RepositoryImpl>()));
     Get.put(HomeController(
-        toCallListUseCase: Get.find(), toBuyListUseCase: Get.find()));
+        toCallListUseCase: Get.find(),
+        toBuyListUseCase: Get.find(),
+        toSellListUseCase: Get.find(),
+        saveToBuyUseCase: Get.find()));
   }
 }

@@ -7,5 +7,5 @@ abstract class Repository {
 
   Future<List<BuyEntity>> getToSellList();
 
-  Future<bool> saveToBuy(BuyEntity entity);
+  Future<bool> saveToBuy(List<BuyEntity> entities);
 }

@@ -3,7 +3,7 @@ class BuyEntity {
   final String name;
   final int price;
   final int quantity;
-  final int type;
+  int type;
 
   BuyEntity(
       {required this.id,

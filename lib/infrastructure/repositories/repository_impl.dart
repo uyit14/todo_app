@@ -1,3 +1,8 @@
+import 'package:flutter/cupertino.dart';
+import 'package:hive/hive.dart';
+import 'package:todo_app/common/db_constants.dart';
+import 'package:todo_app/infrastructure/models/hive_sell_model.dart';
+
 import '../../domain/entities/entity.dart';
 import '../../domain/repositories/repository.dart';
 import '../../infrastructure/models/model.dart';
@@ -33,11 +38,20 @@ class RepositoryImpl implements Repository {
 
   @override
   Future<List<BuyEntity>> getToSellList() async {
-    return [];
+    final box = Hive.box<HiveSellModel>(DbConstants.DB_NAME);
+    print('getToSellList: ${box.values.toList().length}');
+    return Mapper.toBuyEntityList(box.values.toList());
   }
 
   @override
-  Future<bool> saveToBuy(BuyEntity entity) async {
-    return true;
+  Future<bool> saveToBuy(List<BuyEntity> entities) async {
+    try {
+      final box = Hive.box<HiveSellModel>(DbConstants.DB_NAME);
+      box.addAll(Mapper.toHiveSellsModel(entities));
+      return true;
+    } catch (e) {
+      debugPrint(e.toString());
+      return false;
+    }
   }
 }

@@ -2,13 +2,13 @@ import '../entities/entity.dart';
 import '../repositories/repository.dart';
 import 'base_usecase.dart';
 
-class SaveToBuyUseCase implements BaseUseCase<bool, BuyEntity> {
+class SaveToBuyUseCase implements BaseUseCase<bool, List<BuyEntity>> {
   final Repository repository;
 
   SaveToBuyUseCase({required this.repository});
 
   @override
-  Future<bool> call(BuyEntity params) async {
+  Future<bool> call(List<BuyEntity> params) async {
     return await repository.saveToBuy(params);
   }
 }
