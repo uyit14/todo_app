@@ -12,8 +12,10 @@ void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   final applicationDocumentDir = await getApplicationDocumentsDirectory();
   Hive.init(applicationDocumentDir.path);
+
   await Hive.openBox<HiveSellModel>(DbConstants.DB_NAME);
   Hive.registerAdapter(HiveSellModelAdapter());
+
   runApp(const MyApp());
 }
 
